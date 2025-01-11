@@ -5,9 +5,9 @@ import org.example.hotelmanagmentsystem.models.room.RoomRequest;
 import org.example.hotelmanagmentsystem.models.room.RoomResponse;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 
 public interface RoomMapper {
-    Room toRoom(RoomRequest roomRequest);
     RoomResponse toRoomResponse (Room room);
+    Room toRoom(RoomRequest roomRequest);
 }

@@ -9,7 +9,6 @@ import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,7 +18,5 @@ public class RoomResponse {
     private UUID id;
     private int roomNumber;
     private int capacity;
-    private boolean isOccupied;
     private int pricePerNight;
-    //TODO
 }

@@ -5,7 +5,7 @@ import org.example.hotelmanagmentsystem.models.guest.GuestRequest;
 import org.example.hotelmanagmentsystem.models.guest.GuestResponse;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 
 public interface GuestMapper {
     Guest toGuest(GuestRequest guestRequest);
