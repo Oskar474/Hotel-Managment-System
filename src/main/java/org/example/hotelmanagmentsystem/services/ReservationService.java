@@ -27,12 +27,15 @@ public class ReservationService {
     private final GuestRepository guestRepository;
     public List<ReservationResponse> getAllReservationsPerRoom(int roomNumber) {
         Optional<Room> optionalRoom = roomRepository.findByRoomNumber(roomNumber);
-        Room room = optionalRoom.get();
-        return reservationRepository.findAll()
-                .stream()
-                .filter(reservation -> reservation.getRoom().equals(room))
-                .map(reservationMapper::toReservationResponse)
-                .toList();
+        if (optionalRoom.isPresent()) {
+            Room room = optionalRoom.get();
+            return reservationRepository.findAll()
+                    .stream()
+                    .filter(reservation -> reservation.getRoom().equals(room))
+                    .map(reservationMapper::toReservationResponse)
+                    .toList();
+        }
+        return null;
     }
     public List<ReservationResponse> getAllReservations(){
         return reservationRepository.findAll()

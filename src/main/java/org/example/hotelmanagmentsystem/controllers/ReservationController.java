@@ -22,7 +22,7 @@ public class ReservationController {
     public ResponseEntity<List<ReservationResponse>> getAllReservations() {
         return ResponseEntity.status(HttpStatus.OK).body(reservationService.getAllReservations());
     }
-    @PostMapping("/addReservation")
+    @PostMapping("/reservations")
     public ResponseEntity<String> addReservation(@RequestBody ReservationRequest reservationRequest){
         if (!reservationService.createReservation(reservationRequest)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
@@ -31,7 +31,7 @@ public class ReservationController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Reservation created successfully.");
     }
-    @DeleteMapping("/cancelReservation")
+    @DeleteMapping("/reservations")
     public ResponseEntity<String> cancelReservation(@RequestBody ReservationRequest reservationRequest){
         if (reservationService.cancelReservation(reservationRequest))
             return ResponseEntity.status(HttpStatus.OK).body("Reservation canceled");

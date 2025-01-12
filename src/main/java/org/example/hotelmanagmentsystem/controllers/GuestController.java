@@ -23,6 +23,8 @@ public class GuestController {
     @PostMapping("/guest")
     public ResponseEntity<GuestResponse> addGuest(@RequestBody GuestRequest guestRequest) {
         GuestResponse guestResponse = guestService.addGuest(guestRequest);
+        if (guestResponse==null)
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(guestResponse);
         return ResponseEntity.status(HttpStatus.CREATED).body(guestResponse);
     }
     @GetMapping("/guest/{phoneNumber}")

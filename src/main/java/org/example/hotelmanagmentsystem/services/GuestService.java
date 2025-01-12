@@ -21,6 +21,8 @@ public class GuestService {
     private final GuestMapper guestMapper;
     private final GuestRepository guestRepository;
     public GuestResponse addGuest(GuestRequest guestRequest) {
+        if (guestRepository.findByPhoneNumber(guestRequest.getPhoneNumber()).isPresent())
+            return null;
         Guest guest = guestMapper.toGuest(guestRequest);
         return guestMapper.toGuestResponse(guestRepository.save(guest));
     }
